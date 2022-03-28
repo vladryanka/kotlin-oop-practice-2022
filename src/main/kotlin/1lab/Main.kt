@@ -52,54 +52,54 @@ fun parser(book: String): List<Books> {
 
 }
 
-fun OldBook(list: List<Books>): Int {
-    var maxval = Int.MIN_VALUE
+fun oldBook(list: List<Books>): Int {
+    var maxVal = Int.MIN_VALUE
     if (list.isEmpty())
         throw IllegalArgumentException("Book string is empty")
     else {
 
-        for (booknew in list) {
-            if (booknew.year > maxval) {
-                maxval = booknew.year
+        for (bookNew in list) {
+            if (bookNew.year > maxVal) {
+                maxVal = bookNew.year
             }
         }
     }
-    return maxval
+    return maxVal
 }
 
-fun YoungBook(list: List<Books>): Int {
-    var minval = Int.MAX_VALUE
+fun youngBook(list: List<Books>): Int {
+    var minVal = Int.MAX_VALUE
     if (list.isEmpty())
         throw IllegalArgumentException("Book string is empty")
     else {
-        for (booknew in list) {
-            if (booknew.year < minval) {
-                minval = booknew.year
+        for (bookNew in list) {
+            if (bookNew.year < minVal) {
+                minVal = bookNew.year
             }
         }
     }
-    return minval
+    return minVal
 }
 
-fun LongName(list: List<Books>): String {
+fun longName(list: List<Books>): String {
     var length = 0
     var name = ""
-    for (booknew in list) {
-        if (booknew.Name.length > length) {
-            length = booknew.Name.length
-            name = booknew.Name
+    for (bookNew in list) {
+        if (bookNew.Name.length > length) {
+            length = bookNew.Name.length
+            name = bookNew.Name
         }
     }
     return name
 }
 
-fun ShortName(list: List<Books>): String {
+fun shortName(list: List<Books>): String {
     var length = Int.MAX_VALUE
     var name = ""
-    for (booknew in list) {
-        if (booknew.Name.length < length) {
-            length = booknew.Name.length
-            name = booknew.Name
+    for (bookNew in list) {
+        if (bookNew.Name.length < length) {
+            length = bookNew.Name.length
+            name = bookNew.Name
         }
     }
     return name
@@ -110,11 +110,11 @@ fun main() {
     val bookString = "Pushkin//'I have loved you'//1830|Tolstoy//'War and Peace'//1867|Mayakovskiy//'Lilichka'//1934"
     val list: List<Books> = parser(bookString)
     println("The oldest Book: ")
-    println(OldBook(list))
+    println(oldBook(list))
     println("The youngest Book: ")
-    println(YoungBook(list))
+    println(youngBook(list))
     println("The longest Book: ")
-    println(LongName(list))
+    println(longName(list))
     println("The shortest Book: ")
-    println(ShortName(list))
+    println(shortName(list))
 }
