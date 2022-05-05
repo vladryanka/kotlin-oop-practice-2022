@@ -1,11 +1,17 @@
 package lab2
 
-class Rectangle(override val borderColor: Color, override val fillColor: Color, _sideFirst: Float, _sideSecond: Float):
+class Rectangle(override val borderColor: Color, override val fillColor: Color, val sideFirst: Float, val sideSecond: Float) :
     ColorOfShape {
-    private val sideFirst = _sideFirst
-    private val sideSecond = _sideSecond
-    override fun square(): Float
-    {
-        return sideFirst*sideSecond
+    init {
+        if (sideFirst <= 0 || sideSecond<=0) {
+            throw IllegalArgumentException("Invalid value entered")
+        }
+    }
+    override fun square(): Float {
+        return sideFirst * sideSecond
+    }
+
+    override fun toString(): String {
+        return "Rectangle(borderColor=$borderColor, fillColor=$fillColor, sideFirst=$sideFirst, sideSecond=$sideSecond)"
     }
 }

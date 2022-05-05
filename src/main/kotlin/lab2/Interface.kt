@@ -1,10 +1,10 @@
 package lab2
 
-interface ColorOfShape: Shape{
+interface ColorOfShape : Shape {
     val borderColor: Color
     val fillColor: Color
 }
-interface Shape
-{
+
+interface Shape {
     fun square(): Float
 }
