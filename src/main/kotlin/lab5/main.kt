@@ -1,6 +1,14 @@
-package lab2
+package lab5
 
-fun main() {
+import lab2.ColorOfShape
+import lab2.Rectangle
+import lab2.Circle
+import lab2.Foursquare
+import lab2.Triangle
+import lab2.Color
+
+fun main()
+{
     val color1 = Color(255, 255, 255, 20)
     val color2 = Color(0, 0, 0, 80)
     val circle = Circle(color1, color2, 10.0f)
@@ -13,7 +21,7 @@ fun main() {
     println(foursquare.square())
     val circle2 = Circle(color2, color2, 12.0f)
     val triangle2 = Triangle(color1, color1, 4.0f, 8.0f)
-    val testShapeCollector = ShapeCollector()
+    val testShapeCollector = GenericShapeCollector<ColorOfShape>()
     testShapeCollector.addFigure(circle)
     testShapeCollector.addFigure(triangle)
     testShapeCollector.addFigure(rectangle)
@@ -30,4 +38,6 @@ fun main() {
     println("Shapes grouped by border color = ${testShapeCollector.borderColorMap()}")
     println("Shapes grouped by border color = ${testShapeCollector.fillColorMap()}")
     println("Shapes grouped by type = ${testShapeCollector.returnType(Circle::class.java)}")
+    println("Shapes sorted by square:${testShapeCollector.getSorted(Comparator())}")
+
 }

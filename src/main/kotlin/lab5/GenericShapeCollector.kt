@@ -1,9 +1,13 @@
-package lab2
+package lab5
 
-class ShapeCollector {
-    private val listOfShapes = mutableListOf<ColorOfShape>()
+import lab2.Color
+import lab2.ColorOfShape
 
-    fun addFigure(figure: ColorOfShape) {
+class GenericShapeCollector<out T: ColorOfShape> {
+
+    private val listOfShapes = mutableListOf<T>()
+
+    fun addFigure(figure: @UnsafeVariance T) {
         listOfShapes.add(figure)
     }
 
@@ -23,22 +27,21 @@ class ShapeCollector {
         return sumValue
     }
 
-    fun findBorderColor(color: Color): List<ColorOfShape> {
-        val listFigures: ArrayList<ColorOfShape> = arrayListOf()
+    fun findBorderColor(color: Color): List<T> {
+        val listFigures: ArrayList<T> = arrayListOf()
         for (i in 0 until listOfShapes.size) if (listOfShapes[i].borderColor == color) {
             listFigures.add(listOfShapes[i])
         }
         return listFigures
     }
 
-    fun findFillColor(color: Color): List<ColorOfShape> {
-        val listFigures: ArrayList<ColorOfShape> = arrayListOf()
+    fun findFillColor(color: Color): List<T> {
+        val listFigures: ArrayList<T> = arrayListOf()
         for (i in 0 until listOfShapes.size) if (listOfShapes[i].fillColor == color) listFigures.add(listOfShapes[i])
         return listFigures
     }
 
-    fun returnList(): List<ColorOfShape> {
-
+    fun returnList(): List<T> {
         return listOfShapes
     }
 
@@ -46,17 +49,23 @@ class ShapeCollector {
         return listOfShapes.size
     }
 
-    fun fillColorMap(): Map<Color, List<ColorOfShape>> {
+    fun fillColorMap(): Map<Color, List<T>> {
         return listOfShapes.groupBy { it.fillColor }
     }
 
-    fun borderColorMap(): Map<Color, List<ColorOfShape>> {
+    fun borderColorMap(): Map<Color, List<T>> {
         return listOfShapes.groupBy { it.borderColor }
     }
 
-    fun returnType(nameOfFigure: Class<out ColorOfShape>): List<ColorOfShape> {
-        return listOfShapes.filterIsInstance(nameOfFigure)
+    fun returnType(nameOfFigure: Class<out ColorOfShape>) = listOfShapes.filterIsInstance(nameOfFigure)
+
+    fun getSorted(comparator: Comparator): List<T> {
+        return listOfShapes.sortedWith(comparator)
     }
+    fun addAll(list: List<@UnsafeVariance T>) {
+        list.forEach { listOfShapes.add(it) }
+    }
+
     override fun toString(): String {
         var print = ""
         listOfShapes.forEach { print += it.toString() + "\n" }

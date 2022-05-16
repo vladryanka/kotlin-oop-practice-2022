@@ -92,6 +92,6 @@ internal class TestSecondLab {
         testShapeCollector.addFigure(circle)
         testShapeCollector.addFigure(triangle1)
         testShapeCollector.addFigure(triangle2)
-        assertEquals( listOf(circle), testShapeCollector.returnType("Circle"))
+        assertEquals( listOf(circle), testShapeCollector.returnType(Circle::class.java))
     }
 }
