@@ -4,8 +4,8 @@ import java.util.*
 
 
 sealed class Note(
-    var title: String,
-    var data: Date
+    val title: String,
+    val data: Date
 ) {
     class TextNote(title: String, data: Date, val text: String) : Note(title, data) {
         override fun toString(): String {
@@ -15,7 +15,7 @@ sealed class Note(
 
     class Task(
         title: String, data: Date,
-        val description: String, deadline: String
+        val description: String, val deadline: String
     ) : Note(title, data) {
         override fun toString(): String {
             return "Task(description='$description')"
