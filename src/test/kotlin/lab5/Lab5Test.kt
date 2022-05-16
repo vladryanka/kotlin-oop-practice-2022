@@ -5,6 +5,7 @@ import lab2.ColorOfShape
 import lab2.Triangle
 import org.junit.jupiter.api.Test
 
+
 import org.junit.jupiter.api.Assertions.*
 
 internal class Lab5Test {
