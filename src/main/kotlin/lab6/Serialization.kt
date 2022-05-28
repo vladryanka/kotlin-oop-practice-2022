@@ -22,6 +22,7 @@ class Serialization {
         }
     }
 
+
     private fun serialize(shapes: List<ColorOfShape>): String {
         return json.encodeToString(shapes)
     }
