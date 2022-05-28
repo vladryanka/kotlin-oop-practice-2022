@@ -1,0 +1,7 @@
+package CourseWork
+
+class ConsoleView {
+
+
+
+}

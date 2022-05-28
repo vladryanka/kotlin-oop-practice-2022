@@ -20,6 +20,4 @@ fun main() {
     println("find by name: ${noteService.findNameNote("Homework")}")
     println("find by type: ${noteService.findTypeNote(noteService.javaClass)}")
     noteService.deleteNote()
-
-
 }
