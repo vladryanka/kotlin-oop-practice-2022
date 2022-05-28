@@ -19,11 +19,11 @@ fun main() {
     test.writeToFile("File.txt", testShapeCollector.returnList())
     val list = test.readFromFile("File.txt")
     var i = 0
+
     while (i != list.size - 1)
     {
         testShapeCollector.addFigure(list[i])
         i++
     }
     test.writeToFile("File2.txt", testShapeCollector.returnList())
-
 }
